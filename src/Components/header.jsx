@@ -1,21 +1,31 @@
+import { Link } from "react-router-dom";
 import "../Styles/header.css";
 
-function NavBar() {
+function Header() {
   return (
     <div className="navbar">
+      <h1>Todos App</h1>
       <ul>
-        <li>
-          <span>Add Todos</span>
-        </li>
-        <li>
-          <span>Show Todos</span>
-        </li>
-        <li>
-          <span>API Todos</span>
-        </li>
+        <div className="header-container">
+          <Link to="/addTodos">
+            <li>
+              <span>Add Todos</span>
+            </li>
+          </Link>
+          <Link to="/showTodos">
+            <li>
+              <span>Show Todos</span>
+            </li>
+          </Link>
+          <Link to="/addTodos">
+            <li>
+              <span>API Todos</span>
+            </li>
+          </Link>
+        </div>
       </ul>
     </div>
   );
 }
 
-export default NavBar;
+export default Header;

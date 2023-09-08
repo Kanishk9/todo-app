@@ -8,7 +8,27 @@ function AddTodos(props) {
   const onClickHandler = (e) => {
     e.preventDefault();
     console.log("submit button clicked", task, priority);
-    props.onSubmitHandler(task, priority);
+    if (formValidation(task, priority)) {
+      props.onSubmitHandler(task, priority);
+    }
+  };
+
+  const formValidation = (task, priority) => {
+    if (task === "") {
+      alert("Please enter a valid task");
+      return false;
+    }
+    if (priority === "") {
+      alert("Please enter a valid priority");
+      return false;
+    }
+
+    //REGEX learn
+    // if(){
+    //   alert("Priority should only be a number");
+    //   return false;
+    // }
+    return true;
   };
 
   return (
@@ -46,6 +66,7 @@ function AddTodos(props) {
         <br />
         <input id="submit" type="submit" onClick={onClickHandler} />
       </form>
+      <span className="success-alert">Task added successfully</span>
     </div>
   );
 }

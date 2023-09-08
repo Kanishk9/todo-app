@@ -12,6 +12,12 @@ input{
 #submit{
     background-color: rgb(72, 185, 72);
     border-radius: 10px;
-    padding: 5px;
+    padding: 10px;
     font-weight: bold;
+}
+
+.success-alert{
+    font-style: italic;
+    color: green;
+    display: none;
 }
