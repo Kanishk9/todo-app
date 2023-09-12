@@ -16,8 +16,12 @@ input{
     font-weight: bold;
 }
 
-.success-alert{
+.is-visible{
     font-style: italic;
     color: green;
+    display: block;
+}
+
+.in-visible{
     display: none;
 }

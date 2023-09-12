@@ -4,12 +4,16 @@ import "../Styles/addTodos.css";
 function AddTodos(props) {
   const [task, setTask] = useState("");
   const [priority, setPriority] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
 
   const onClickHandler = (e) => {
     e.preventDefault();
     console.log("submit button clicked", task, priority);
     if (formValidation(task, priority)) {
-      props.onSubmitHandler(task, priority);
+      if(props.onSubmitHandler(task, priority) === true){
+        setIsVisible(true);
+        setTimeout(() => setIsVisible(false), 2000)
+      }
     }
   };
 
@@ -66,7 +70,7 @@ function AddTodos(props) {
         <br />
         <input id="submit" type="submit" onClick={onClickHandler} />
       </form>
-      <span className="success-alert">Task added successfully</span>
+      <span className={isVisible ? "is-visible" : "in-visible"} >Task added successfully</span>
     </div>
   );
 }

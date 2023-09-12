@@ -36,6 +36,7 @@ function Todos() {
     };
     console.log(newTodo);
     setTodos([...todos, newTodo]);
+    return true;
   };
 
   const onDeleteHandler = (id) => {
