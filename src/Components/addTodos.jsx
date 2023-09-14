@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "../Styles/addTodos.css";
 
 function AddTodos(props) {
   const [task, setTask] = useState("");
   const [priority, setPriority] = useState("");
   const [isVisible, setIsVisible] = useState(false);
+  const taskRef = useRef();
+  const priorityRef = useRef();
 
   const onClickHandler = (e) => {
     e.preventDefault();
@@ -20,10 +22,12 @@ function AddTodos(props) {
   const formValidation = (task, priority) => {
     if (task === "") {
       alert("Please enter a valid task");
+      taskRef.current.focus();
       return false;
     }
     if (priority === "") {
       alert("Please enter a valid priority");
+      priorityRef.current.focus();
       return false;
     }
 
@@ -48,6 +52,7 @@ function AddTodos(props) {
           name="task"
           type="text"
           value={task}
+          ref={taskRef}
           onChange={(e) => {
             setTask(e.target.value);
           }}
@@ -63,6 +68,7 @@ function AddTodos(props) {
           name="priority"
           type="number"
           value={priority}
+          ref={priorityRef}
           onChange={(e) => {
             setPriority(e.target.value);
           }}
