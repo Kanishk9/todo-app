@@ -5,22 +5,18 @@ import ShowTodos from "./showTodos";
 
 import "../Styles/todos.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 function Todos() {
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      task: "Gym",
-      priority: 1,
-    },
-    {
-      id: 2,
-      task: "Guitar tutorial",
-      priority: 3,
-    },
-  ]);
+  let currentTodos;
+  if (localStorage.getItem("todos") === null) {
+    currentTodos = [];
+  } else {
+    currentTodos = JSON.parse(localStorage.getItem("todos"));
+  }
+
+  const [todos, setTodos] = useState(currentTodos);
 
   const onSubmitHandler = (task, priority) => {
     let id;
@@ -47,13 +43,25 @@ function Todos() {
     setTodos(newTodo);
   };
 
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
   return (
     <div className="main-body">
       <Header />
       <Routes>
         <Route index element={<IndexTodo />} />
-        <Route path="/addTodos" element={<AddTodos onSubmitHandler={onSubmitHandler} />} />
-        <Route path="/showTodos" element={<ShowTodos todos={todos} onDeleteHandler={onDeleteHandler} />} />
+        <Route
+          path="/addTodos"
+          element={<AddTodos todos={todos} onSubmitHandler={onSubmitHandler} />}
+        />
+        <Route
+          path="/showTodos"
+          element={
+            <ShowTodos todos={todos} onDeleteHandler={onDeleteHandler} />
+          }
+        />
         {/* <Route path="/apiTodos" element={<ApiTodos/>} /> */}
       </Routes>
     </div>
