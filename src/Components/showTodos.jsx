@@ -6,7 +6,7 @@ function ShowTodos(props) {
       <h3>Showing Todos</h3>
       {props.todos.length === 0 ? "Todos list is empty":
         props.todos.map((todo) => {
-          return <TodoItem key={todo.id} todo={todo} onDeleteHandler={props.onDeleteHandler} />;
+          return <TodoItem key={todo.id} todo={todo} onDeleteHandler={props.onDeleteHandler} disabled={props.disabled} />;
         })
       }
       

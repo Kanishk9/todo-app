@@ -8,12 +8,12 @@ function TodoItem(props) {
 
   return (
     <div className="todoitem">
-      <span>Task: {props.todo.task}</span>
+      <span>Task: {props.todo.todo}</span>
       <br />
       <span>Priority: {props.todo.priority}</span>
       <br />
       <span>
-        <button onClick={(e) => onClick(e,props.todo.id)} >Delete</button>
+        <button onClick={(e) => onClick(e,props.todo.id)} disabled={props.disabled} >Delete</button>
       </span><br /><br />
     </div>
   );

@@ -17,7 +17,7 @@ function Header() {
               <span>Show Todos</span>
             </li>
           </Link>
-          <Link to="/addTodos">
+          <Link to="/apiTodos">
             <li>
               <span>API Todos</span>
             </li>

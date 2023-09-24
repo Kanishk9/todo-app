@@ -7,6 +7,7 @@ import "../Styles/todos.css";
 
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import ApiTodos from "./apiTodos";
 
 function Todos() {
   let currentTodos;
@@ -18,7 +19,7 @@ function Todos() {
 
   const [todos, setTodos] = useState(currentTodos);
 
-  const onSubmitHandler = (task, priority) => {
+  const onSubmitHandler = (todo, priority) => {
     let id;
     if (todos.length !== 0) {
       id = todos[todos.length - 1].id + 1;
@@ -27,7 +28,7 @@ function Todos() {
     }
     const newTodo = {
       id: id,
-      task: task,
+      todo: todo,
       priority: priority,
     };
     console.log(newTodo);
@@ -62,7 +63,10 @@ function Todos() {
             <ShowTodos todos={todos} onDeleteHandler={onDeleteHandler} />
           }
         />
-        {/* <Route path="/apiTodos" element={<ApiTodos/>} /> */}
+        <Route
+          path="/apiTodos"
+          element={<ApiTodos todos={todos} onDeleteHandler={onDeleteHandler} />}
+        />
       </Routes>
     </div>
   );
