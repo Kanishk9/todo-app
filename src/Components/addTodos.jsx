@@ -12,9 +12,9 @@ function AddTodos(props) {
     e.preventDefault();
     console.log("submit button clicked", task, priority);
     if (formValidation(task, priority)) {
-      if(props.onSubmitHandler(task, priority) === true){
+      if (props.onSubmitHandler(task, priority) === true) {
         setIsVisible(true);
-        setTimeout(() => setIsVisible(false), 2000)
+        setTimeout(() => setIsVisible(false), 2000);
       }
     }
   };
@@ -76,7 +76,11 @@ function AddTodos(props) {
         <br />
         <input id="submit" type="submit" onClick={onClickHandler} />
       </form>
-      <span className={isVisible ? "is-visible" : "in-visible"} >Task added successfully</span>
+      <div className={isVisible ? "is-visible" : "in-visible"}>
+        <p className="success-alert">
+          <b>SUCCESS!</b>&nbsp; Todo added.
+        </p>
+      </div>
     </div>
   );
 }

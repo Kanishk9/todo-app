@@ -13,7 +13,7 @@ function TodoItem(props) {
       <span>Priority: {props.todo.priority}</span>
       <br />
       <span>
-        <button onClick={(e) => onClick(e,props.todo.id)} disabled={props.disabled} >Delete</button>
+        <button onClick={(e) => onClick(e,props.todo.id)} disabled={props.disabled} >DELETE</button>
       </span><br /><br />
     </div>
   );
